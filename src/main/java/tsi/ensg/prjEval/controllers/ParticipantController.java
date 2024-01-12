@@ -13,6 +13,6 @@ public class ParticipantController {
     public String getEventWithId(@PathVariable("id_participant") long id_participant, Model model) {
         Participant participant = new Participant();
         model.addAttribute("participant", participant);
-        return "participant_infos.html";
+        return "participant_info.html";
     }
 }
