@@ -24,7 +24,7 @@ public class Event {
 
     @Column private int nbUsersMax;
 
-    @OneToMany private List<Participant> participants;
+    @ManyToMany private List<Participant> participants;
 
     // ----------------------------------------------------------- //
     //                        CONSTRUCTORS                         //

@@ -13,9 +13,9 @@
         <th>Titre</th>
         <th>Date</th>
     </tr>
-    <tr>
-        <td><a href="/events/1">Event test</a></td>
-        <td>1/1/2024</td>
+    <tr th:each="event: ${events}">
+        <td><a th:href="'/events/' + ${event.getId()}" th:text="${event.getTitle()}"/></td>
+        <td th:text="${event.getDate()}"/>
     </tr>
 </table>
 </body>
