@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import tsi.ensg.prjEval.models.Event;
 import tsi.ensg.prjEval.services.EventService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
