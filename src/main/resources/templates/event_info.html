@@ -7,10 +7,13 @@
     <body>
         <p><a href="/">home</a></p>
         <br>
-        <p th:text="'Evenement : ' + ${event}"/>
+        <h1 th:text="${event.getDisplay()}"/>
+        <p th:text="'Date ' + ${event.getDate()}"/>
+        <p th:text="${event.getContent()}"/>
+        <p th:text="'En savoir plus'" th:title="'Evenement : ' + ${event}"/>
         <table>
             <tr>
-                <th>Participant</th>
+                <th>Participants</th>
             </tr>
             <tr th:each="participant: ${event.getParticipants()}">
                 <td><a th:href="'/participants/' + ${participant.getId()}" th:text="${participant.getDisplay()}"/></td>
