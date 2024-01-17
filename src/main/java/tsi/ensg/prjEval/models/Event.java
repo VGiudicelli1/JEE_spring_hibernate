@@ -26,7 +26,13 @@ public class Event {
 
     @Column private int nbUsersMax;
 
-    @ManyToMany private List<Participant> participants;
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Event_Participant",
+            joinColumns = { @JoinColumn(name = "event_id") },
+            inverseJoinColumns = { @JoinColumn(name = "participant_id") }
+    )
+    private List<Participant> participants;
 
     // ----------------------------------------------------------- //
     //                        CONSTRUCTORS                         //
@@ -118,7 +124,7 @@ public class Event {
                 ", date=" + date +
                 ", duration=" + duration +
                 ", nbUsersMax=" + nbUsersMax +
-                ", participants=" + participants +
+                ", participants=List(" + participants.size() + ')' +
                 '}';
     }
 

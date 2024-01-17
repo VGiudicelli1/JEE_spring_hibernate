@@ -23,7 +23,8 @@ public class Participant {
     @Column private String company;
     @Column private String comments;
 
-    //private List<Event> events;
+    @ManyToMany(mappedBy = "participants")
+    private List<Event> events;
 
     // ----------------------------------------------------------- //
     //                        CONSTRUCTORS                         //
@@ -78,8 +79,7 @@ public class Participant {
     }
 
     public List<Event> getEvents() {
-        //return events;
-        return null;
+        return events;
     }
 
     public void setId(long id) {
@@ -111,7 +111,7 @@ public class Participant {
     }
 
     public void setEvents(List<Event> events) {
-        //this.events = (events == null) ? new ArrayList<>() : events;
+        this.events = (events == null) ? new ArrayList<>() : events;
     }
     // ----------------------------------------------------------- //
     //                           OTHERS                            //
@@ -127,7 +127,7 @@ public class Participant {
                 ", birthdate=" + birthdate +
                 ", company='" + company + '\'' +
                 ", comments='" + comments + '\'' +
-                ", events='" + getEvents() + '\'' +
+                ", events=List(" + events.size() + ')' +
                 '}';
     }
 
