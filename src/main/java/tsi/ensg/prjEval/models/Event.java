@@ -6,7 +6,6 @@ import org.hibernate.annotations.GenericGenerator;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table
@@ -18,9 +17,12 @@ public class Event {
     private long id;
 
     @Column private String title;
+
     @Column private String content;
 
     @Column private Date date;
+
+    @Column private Double duration; // duration in day
 
     @Column private int nbUsersMax;
 
@@ -30,16 +32,17 @@ public class Event {
     //                        CONSTRUCTORS                         //
     // ----------------------------------------------------------- //
 
-    public Event(String title, String content, Date date, int nbUsersMax, List<Participant> participants) {
+    public Event(String title, String content, Date date, double duration, int nbUsersMax, List<Participant> participants) {
         this.setTitle(title);
         this.setContent(content);
         this.setDate(date);
+        this.setDuration(duration);
         this.setNbUsersMax(nbUsersMax);
         this.setParticipants(participants);
     }
     
     public Event() {
-        this(null, null, null, 0, null);
+        this(null, null, null, 0, 0, null);
     }
 
     // ----------------------------------------------------------- //
@@ -60,6 +63,10 @@ public class Event {
 
     public Date getDate() {
         return date;
+    }
+
+    public Double getDuration() {
+        return  duration;
     }
 
     public int getNbUsersMax() {
@@ -86,6 +93,10 @@ public class Event {
         this.date = (date == null) ? new Date() : date;
     }
 
+    public void setDuration(Double duration) {
+        this.duration = (duration < 0) ? 0 : duration;
+    }
+
     public void setNbUsersMax(int nbUsersMax) {
         this.nbUsersMax = Math.max(0, nbUsersMax);
     }
@@ -105,6 +116,7 @@ public class Event {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", date=" + date +
+                ", duration=" + duration +
                 ", nbUsersMax=" + nbUsersMax +
                 ", participants=" + participants +
                 '}';
