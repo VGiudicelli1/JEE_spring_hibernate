@@ -1,12 +1,20 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-    <title>Event info</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-<p><a href="/">home</a></p>
-<br>
-<p th:text="'Evenement : ' + ${event}"/>
-</body>
+    <head>
+        <title>Event info</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <p><a href="/">home</a></p>
+        <br>
+        <p th:text="'Evenement : ' + ${event}"/>
+        <table>
+            <tr>
+                <th>Participant</th>
+            </tr>
+            <tr th:each="participant: ${event.getParticipants()}">
+                <td><a th:href="'/participants/' + ${participant.getId()}" th:text="${participant.getDisplay()}"/></td>
+            </tr>
+        </table>
+    </body>
 </html>

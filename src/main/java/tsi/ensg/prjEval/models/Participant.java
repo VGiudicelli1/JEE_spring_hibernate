@@ -3,7 +3,9 @@ package tsi.ensg.prjEval.models;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -21,20 +23,26 @@ public class Participant {
     @Column private String company;
     @Column private String comments;
 
+    //private List<Event> events;
+
     // ----------------------------------------------------------- //
     //                        CONSTRUCTORS                         //
     // ----------------------------------------------------------- //
 
-    public Participant(String firstName, String lastName, String email, Date birthdate, String company, String comments) {
+    public Participant(String firstName, String lastName, String email, Date birthdate, String company, String comments, List<Event> events) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setEmail(email);
         this.setBirthdate(birthdate);
         this.setCompany(company);
         this.setComments(comments);
+        this.setEvents(events);
+    }
+    public Participant(String firstName, String lastName, String email, Date birthdate, String company, String comments) {
+        this(firstName, lastName, email, birthdate, company, comments, null);
     }
     public Participant() {
-        this(null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null);
     }
 
     // ----------------------------------------------------------- //
@@ -69,6 +77,11 @@ public class Participant {
         return comments;
     }
 
+    public List<Event> getEvents() {
+        //return events;
+        return null;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -97,6 +110,9 @@ public class Participant {
         this.comments = (comments == null) ? "" : comments;
     }
 
+    public void setEvents(List<Event> events) {
+        //this.events = (events == null) ? new ArrayList<>() : events;
+    }
     // ----------------------------------------------------------- //
     //                           OTHERS                            //
     // ----------------------------------------------------------- //
@@ -111,6 +127,11 @@ public class Participant {
                 ", birthdate=" + birthdate +
                 ", company='" + company + '\'' +
                 ", comments='" + comments + '\'' +
+                ", events='" + getEvents() + '\'' +
                 '}';
+    }
+
+    public String getDisplay() {
+        return this.getFirstName() + " " + this.getLastName();
     }
 }

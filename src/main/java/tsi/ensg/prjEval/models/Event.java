@@ -121,4 +121,8 @@ public class Event {
                 ", participants=" + participants +
                 '}';
     }
+
+    public String getDisplay() {
+        return this.title;
+    }
 }

@@ -8,7 +8,9 @@ import tsi.ensg.prjEval.models.Participant;
 import tsi.ensg.prjEval.services.EventService;
 import tsi.ensg.prjEval.services.ParticipantService;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class InitializerDatabaseController {
@@ -37,8 +39,23 @@ public class InitializerDatabaseController {
         participantService.save(p3);
         participantService.save(p4);
 
+        List<Participant> l1 = new ArrayList<>();
+        l1.add(p1);
+        l1.add(p2);
+        e1.setParticipants(l1);
         eventService.save(e1);
+
+        List<Participant> l2 = new ArrayList<>();
+        l2.add(p1);
+        l2.add(p2);
+        l2.add(p3);
+        e2.setParticipants(l2);
         eventService.save(e2);
+
+        List<Participant> l3 = new ArrayList<>();
+        l3.add(p1);
+        l3.add(p4);
+        e3.setParticipants(l3);
         eventService.save(e3);
 
         return "initialized.html";
