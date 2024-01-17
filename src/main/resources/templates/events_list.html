@@ -1,22 +1,22 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-    <title>Events list</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-<p><a href="/">home</a></p>
-<br>
-<p>Liste des évènements</p>
-<table>
-    <tr>
-        <th>Titre</th>
-        <th>Date</th>
-    </tr>
-    <tr th:each="event: ${events}">
-        <td><a th:href="'/events/' + ${event.getId()}" th:text="${event.getTitle()}"/></td>
-        <td th:text="${event.getDate()}"/>
-    </tr>
-</table>
-</body>
+    <head>
+        <title>Events list</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <p><a href="/">home</a></p>
+        <br>
+        <p>Liste des évènements</p>
+        <table>
+            <tr>
+                <th>Titre</th>
+                <th>Date</th>
+            </tr>
+            <tr th:each="event: ${events}">
+                <td><a th:href="'/events/' + ${event.getId()}" th:text="${event.getTitle()}"/></td>
+                <td th:text="${event.getDate()}"/>
+            </tr>
+        </table>
+    </body>
 </html>
