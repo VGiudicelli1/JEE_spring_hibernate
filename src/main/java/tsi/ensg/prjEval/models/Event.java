@@ -46,7 +46,7 @@ public class Event {
         this.setNbUsersMax(nbUsersMax);
         this.setParticipants(participants);
     }
-    
+
     public Event() {
         this(null, null, null, 0, 0, null);
     }

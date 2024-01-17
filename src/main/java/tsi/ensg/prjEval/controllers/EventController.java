@@ -3,8 +3,11 @@ package tsi.ensg.prjEval.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import tsi.ensg.prjEval.models.Event;
 import tsi.ensg.prjEval.services.EventService;
 
@@ -34,5 +37,20 @@ public class EventController {
         }
         model.addAttribute("event", event.get());
         return "event_info.html";
+    }
+
+    @GetMapping("/events/new")
+    public String addEvent(Model model) {
+        return "add_event.html";
+    }
+
+    @PostMapping("/events/new")
+    public String addEvent(@Validated Event event, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("event", new Event());
+            return "add_event.html";
+        }
+        eventService.save(event);
+        return "redirect:/events/" + event.getId();
     }
 }
