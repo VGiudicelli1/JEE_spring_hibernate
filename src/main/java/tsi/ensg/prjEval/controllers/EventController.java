@@ -41,13 +41,13 @@ public class EventController {
 
     @GetMapping("/events/new")
     public String addEvent(Model model) {
+        model.addAttribute("event", new Event());
         return "add_event.html";
     }
 
     @PostMapping("/events/new")
     public String addEvent(@Validated Event event, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("event", new Event());
             return "add_event.html";
         }
         eventService.save(event);

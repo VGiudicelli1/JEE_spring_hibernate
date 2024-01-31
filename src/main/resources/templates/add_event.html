@@ -9,27 +9,37 @@
         <br>
         <h1>Ajouter un évènement</h1>
         <form th:action="@{/events/new}" th:object="${event}" method="post">
-            <label for="title">Titre</--label>
+            <label for="title">Titre</label>
             <input type="text" th:field="*{title}" name="title" id="title" placeholder="Mon évènement">
             <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
+
+            <br>
 
             <label for="content">Description</label>
             <input type="text" th:field="*{content}" name="content" id="content" placeholder="Ça se pase ici, y'a cette ambiance, ...">
             <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"/>
 
+            <br>
+
             <label for="date">Date</label>
             <input type="date" th:field="*{date}" name="date" id="date">
             <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"/>
 
+            <br>
+
             <label for="duration">Durée (en jours)</label>
-            <input type="text" th:field="*{duration}" name="duration" id="duration" placeholder="0.2">
+            <input type="number" th:field="*{duration}" name="duration" id="duration" placeholder="0.2">
             <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"/>
 
+            <br>
+
             <label for="nbUsersMax">nbUsersMax</label>
-            <input type="text" th:field="*{nbUsersMax}" name="nbUsersMax" id="nbUsersMax" placeholder="5">
+            <input type="number" th:field="*{nbUsersMax}" name="nbUsersMax" id="nbUsersMax" placeholder="5">
             <span th:if="${#fields.hasErrors('nbUsersMax')}" th:errors="*{nbUsersMax}"/>
 
-            <button type="submit">Ajouter</button>
+            <br>
+
+            <button type="submit">Ajouter</button-->
         </form>
     </body>
 </html>

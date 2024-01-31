@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Event info</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <p><a href="/">home</a></p>
+        <br>
+        <h1>Ajouter un évènement</h1>
+        <form th:action="@{/events/new}" th:object="${participant}" method="post">
+            <!--
+            @Column private String firstName;
+            @Column private String lastName;
+            @Column private String email;
+            @Column private Date birthdate;
+            @Column private String company;
+            @Column private String comments;
+            -->
+
+            <br>
+
+            <button type="submit">Ajouter</button-->
+        </form>
+    </body>
+</html>

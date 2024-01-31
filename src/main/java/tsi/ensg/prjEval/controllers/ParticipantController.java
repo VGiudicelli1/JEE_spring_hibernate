@@ -3,8 +3,12 @@ package tsi.ensg.prjEval.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import tsi.ensg.prjEval.models.Event;
 import tsi.ensg.prjEval.models.Participant;
 import tsi.ensg.prjEval.services.ParticipantService;
 
@@ -20,9 +24,24 @@ public class ParticipantController {
     public String getEventWithId(@PathVariable("id_participant") long id_participant, Model model) {
         Optional<Participant> participant = participantService.findById(id_participant);
         if (participant.isEmpty()) {
-            return "participant_info_error.html";
+            return "participant_info_error";
         }
         model.addAttribute("participant", participant.get());
-        return "participant_info.html";
+        return "participant_info";
+    }
+
+    @GetMapping("/participants/new")
+    public String newParticipant(Model model) {
+        model.addAttribute("participant", new Participant());
+        return "add_participant";
+    }
+
+    @PostMapping("/participants/new")
+    public String addEvent(@Validated Participant participant, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "add_participant";
+        }
+        participantService.save(participant);
+        return "redirect:/participants/" + participant.getId();
     }
 }
