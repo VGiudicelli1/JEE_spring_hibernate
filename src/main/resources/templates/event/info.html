@@ -14,6 +14,12 @@
             <p>
                 Date:
                 <span th:text="${event.getDateStr()}"/>.
+            </p>
+            <p>
+                Durée:
+                <span th:text="${event.getDuration()}"/> heures.
+            </p>
+            <p>
                 Nombre de places:
                 <span th:class="${event.getPlaceOccupedRatio()}" th:text="${event.getPlaceInfo()}"/>
             </p>

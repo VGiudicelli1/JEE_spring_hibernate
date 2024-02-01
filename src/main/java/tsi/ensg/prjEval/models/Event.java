@@ -26,7 +26,7 @@ public class Event {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column private Date date;
 
-    @Column private Double duration; // duration in day
+    @Column private Double duration; // duration in hours
 
     @Column private int nbUsersMax;
 
