@@ -1,0 +1,25 @@
+Niveau 1 (fonctionnalités minimales)
+
+[o]		On doit pouvoir ajouter, lister, modifier, supprimer ces événements dans l’application.
+[x]		Les administrateurs peuvent ajouter des participants avec un nom, un prénom, une adresse email, une date de naissance, une organisation/entreprise, et des observations éventuelles.
+[x]		On doit pouvoir ajouter, lister, modifier, supprimer ces participants dans l’application.
+[x]		Ce ne sont pas forcément des participants qui pourront se connecter au site, ils pourront être simplement inscrits aux événements via des formulaires.
+[x]		On doit disposer d’un formulaire permettant d’inscrire un participant à un événement (cela peut se passer sur la même page que la création d’un participant)
+
+Niveau 2 (bonus bleus)
+
+[x]		Les administrateurs doivent s’authentifier sur le site (on peut supposer qu’il n’y a qu’un seul administrateur) et les pages doivent être accessibles uniquement pour ceux-ci.
+[x]		Si lors de l’inscription d’un participant celui-ci a la même adresse email qu’un participant existant, le site proposera de les fusionner.
+[x]		Si le nombre de participants maximum est atteint l’application devra interdire l’inscription.
+[x]		Au choix, un des bonus rouge proposé dans la section suivante.
+
+Niveau 3 (bonus rouges)
+
+[x]		Gérer la persistance de la liste des organisateurs d’événements comme les participants et les événements.
+[x]		Gérer les inscriptions multiples, par exemple en proposant un import de fichier CSV pour ajouter des participants en masse à partir d’un fichier de tableur bien formé.
+[x]		Créer un système d’authentification complet avec auto-inscription des participants authentifiés sur le site.
+[x]		Créer un système de file d’attente pour l’inscription de participants à des événements déjà complets.
+[x]		Améliorer l’aspect et l’adaptabilité de de votre site en utilisant CSS et/ou Javascript (avec Bootstrap par exemple)
+[x]		Toute autre amélioration (que vous pouvez me soumettre si vous avez un doute).
+
+
