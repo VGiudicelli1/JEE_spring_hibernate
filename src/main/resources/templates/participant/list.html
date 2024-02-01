@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:replace="fragments/template :: template"></div>
+<p><a href="/participants/new">Ajouter un utilisateur</a></p>
+<br>
+<table th:if="${!participants.isEmpty()}">
+    <tr>
+        <th>Nom Prénom</th>
+        <th>Evènements</th>
+    </tr>
+    <tr th:each="participant: ${participants}">
+        <td><a th:href="${participant.getLink()}" th:text="${participant.getFullName()}"/></td>
+        <td><span th:text="${participant.getEvents().size()}"/> évènement(s)</td>
+    </tr>
+</table>
+<p th:if="${participants.isEmpty()}">Aucun participant disponnible</p>
+</body>
+</html>

@@ -34,6 +34,12 @@ public class ParticipantController {
         return "participant/add";
     }
 
+    @GetMapping("/participants")
+    public String list(Model model) {
+        model.addAttribute("participants", participantService.findAll());
+        return "participant/list";
+    }
+
     @PostMapping("/participants/new")
     public String addEvent(@Validated Participant participant, BindingResult result, Model model) {
         if (result.hasErrors()) {

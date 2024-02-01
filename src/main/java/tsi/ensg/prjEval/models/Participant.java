@@ -64,6 +64,10 @@ public class Participant {
         return lastName;
     }
 
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -82,6 +86,10 @@ public class Participant {
 
     public List<Event> getEvents() {
         return events;
+    }
+
+    public String getLink() {
+        return "/participant/" + this.id;
     }
 
     public void setId(long id) {
