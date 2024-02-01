@@ -22,6 +22,13 @@ public class InitializerDatabaseController {
 
     @GetMapping("/initDb")
     public String initDbTest() {
+        /*for (Participant p : participantService.findAll()) {
+            participantService.delete(p);
+        }*/
+        for (Event event : eventService.findAll()) {
+            eventService.delete(event);
+        }
+
         Event e1 = new Event("Evenement1", "ceci est un evenement de test",
                 new Date("01/01/2023"), 0.2, 5, null);
         Event e2 = new Event("Date spéciale", "C'est la prochaine date qui s'écrit avec 8 chiffres différents. Quelle est la précédente ?",

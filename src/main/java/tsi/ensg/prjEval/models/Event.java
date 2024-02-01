@@ -26,7 +26,7 @@ public class Event {
 
     @Column private int nbUsersMax;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(
             name = "Event_Participant",
             joinColumns = { @JoinColumn(name = "event_id") },
