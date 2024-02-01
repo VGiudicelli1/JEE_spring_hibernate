@@ -23,26 +23,26 @@ public class EventController {
     public String getAllEvents(Model model) {
         List<Event> events = eventService.findAll();
         model.addAttribute("events", events);
-        return "events_list.html";
+        return "event/list";
     }
 
     @GetMapping("/events/{id_event}")
     public String getEventWithId(@PathVariable("id_event") long id_event, Model model) {
         Event event = eventService.findById(id_event).orElse(null);
         model.addAttribute("event", event);
-        return "event_info.html";
+        return "event/info";
     }
 
     @GetMapping("/events/new")
     public String addEvent(Model model) {
         model.addAttribute("event", new Event());
-        return "add_event.html";
+        return "event/add";
     }
 
     @PostMapping("/events/new")
     public String addEvent(@Validated Event event, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add_event.html";
+            return "event/add";
         }
         eventService.save(event);
         return "redirect:/events/" + event.getId();

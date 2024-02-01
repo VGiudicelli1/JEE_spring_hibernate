@@ -22,24 +22,22 @@ public class ParticipantController {
 
     @GetMapping("/participants/{id_participant}")
     public String getEventWithId(@PathVariable("id_participant") long id_participant, Model model) {
-        Optional<Participant> participant = participantService.findById(id_participant);
-        if (participant.isEmpty()) {
-            return "participant_info_error";
-        }
-        model.addAttribute("participant", participant.get());
-        return "participant_info";
+        Participant participant = participantService.findById(id_participant).orElse(null);
+        System.out.println(participant);
+        model.addAttribute("participant", participant);
+        return "participant/info";
     }
 
     @GetMapping("/participants/new")
     public String newParticipant(Model model) {
         model.addAttribute("participant", new Participant());
-        return "add_participant";
+        return "participant/add";
     }
 
     @PostMapping("/participants/new")
     public String addEvent(@Validated Participant participant, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add_participant";
+            return "participant/add";
         }
         participantService.save(participant);
         return "redirect:/participants/" + participant.getId();
