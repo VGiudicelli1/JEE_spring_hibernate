@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <title>Event info</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
         <div th:replace="fragments/template :: template"></div>
-        <h1>Ajouter un évènement</h1>
+        <h1>Créer un participant</h1>
         <form th:action="@{/events/new}" th:object="${participant}" method="post">
             <!--
             @Column private String firstName;
@@ -19,7 +19,7 @@
 
             <br>
 
-            <button type="submit">Ajouter</button-->
+            <button type="submit">Ajouter</button>
         </form>
     </body>
 </html>
