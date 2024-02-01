@@ -89,7 +89,7 @@ public class Participant {
     }
 
     public String getLink() {
-        return "/participant/" + this.id;
+        return "/participants/" + this.id;
     }
 
     public void setId(long id) {

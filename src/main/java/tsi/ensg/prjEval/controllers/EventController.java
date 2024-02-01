@@ -73,10 +73,17 @@ public class EventController {
             return "redirect:/events";
         }
         event.setId(id_event);
-        event.setParticipants(eventOriginal.getParticipants()); // restore participants
-        if (event.getPlacesFree() < 0) {
-            event.setNbUsersMax(event.getPlaceOccuped());
+
+        if (eventOriginal.getParticipants().size() > event.getNbUsersMax()) {
+            event.setNbUsersMax(eventOriginal.getParticipants().size());
         }
+
+        try {
+            event.setParticipants(eventOriginal.getParticipants()); // restore participants
+        } catch (Exception e) {
+            // cette erreur ne peut pas se produire
+        }
+
         eventService.save(event);
         return "redirect:/events/"+id_event;
     }

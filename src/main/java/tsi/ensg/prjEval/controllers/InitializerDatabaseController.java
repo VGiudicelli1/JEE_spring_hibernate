@@ -93,27 +93,21 @@ public class InitializerDatabaseController {
             participantService.save(p);
         }
 
-        List<Participant> l1 = new ArrayList<>();
-        l1.add(getRandom(participants));
-        l1.add(getRandom(participants));
-        e1.setParticipants(l1);
+        e1.addParticipant(getRandom(participants));
+        e1.addParticipant(getRandom(participants));
         eventService.save(e1);
 
-        List<Participant> l2 = new ArrayList<>();
-        l2.add(getRandom(participants));
-        l2.add(getRandom(participants));
-        l2.add(getRandom(participants));
-        e2.setParticipants(l2);
+        e2.addParticipant(getRandom(participants));
+        e2.addParticipant(getRandom(participants));
+        e2.addParticipant(getRandom(participants));
         eventService.save(e2);
-
-        List<Participant> l3 = new ArrayList<>();
-        l3.add(getRandom(participants));
-        l3.add(getRandom(participants));
-        l3.add(getRandom(participants));
-        l3.add(getRandom(participants));
-        e3.setParticipants(l3);
+        
+        e3.addParticipant(getRandom(participants));
+        e3.addParticipant(getRandom(participants));
+        e3.addParticipant(getRandom(participants));
+        e3.addParticipant(getRandom(participants));
         eventService.save(e3);
 
-        return "initialized.html";
+        return "initialized";
     }
 }

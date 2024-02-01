@@ -48,7 +48,7 @@ public class Event {
         this.setDate(date);
         this.setDuration(duration);
         this.setNbUsersMax(nbUsersMax);
-        this.setParticipants(participants);
+        this.setParticipantsExtendsPlaces(participants);
     }
 
     public Event() {
@@ -149,8 +149,32 @@ public class Event {
         this.nbUsersMax = Math.max(0, nbUsersMax);
     }
 
-    public void setParticipants(List<Participant> participants) {
+    public void setParticipants(List<Participant> participants) throws Exception {
+        if (participants != null && participants.size() > this.nbUsersMax) {
+            throw new Exception("Not enough free places");
+        }
         this.participants = (participants == null) ? new ArrayList<>() : participants;
+    }
+
+    public void setParticipantsExtendsPlaces(List<Participant> participants) {
+        this.participants = (participants == null) ? new ArrayList<>() : participants;
+        if (this.getPlacesFree() < 0) {
+            this.setNbUsersMax(this.getPlaceOccuped());
+        }
+    }
+
+    public boolean addParticipant(Participant p) {
+        if (this.getPlacesFree() <= 0) {
+            return false;
+        }
+        this.participants.add(p);
+        return true;
+    }
+    public void addParticipantOrThrow(Participant p) throws Exception {
+        if (this.getPlacesFree() <= 0) {
+            throw new Exception("No free places");
+        }
+        this.participants.add(p);
     }
 
     // ----------------------------------------------------------- //
