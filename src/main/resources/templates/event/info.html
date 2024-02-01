@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <div th:replace="fragments/header :: header" th:fragment="template"></div>
+        <div th:replace="fragments/template :: template"></div>
         <div th:if="${event == null}">
             <p th:text="'L\'évenement n°' + ${id_event} + ' n\'existe pas'"/>
         </div>

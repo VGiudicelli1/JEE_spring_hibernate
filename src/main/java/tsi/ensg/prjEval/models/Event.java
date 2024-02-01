@@ -3,7 +3,9 @@ package tsi.ensg.prjEval.models;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
+import tsi.ensg.prjEval.Utils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -83,6 +85,44 @@ public class Event {
 
     public List<Participant> getParticipants() {
         return participants;
+    }
+
+    public Integer getPlacesFree() {
+        return this.nbUsersMax - this.participants.size();
+    }
+
+    public Integer getPlaceOccuped() {
+        return this.participants.size();
+    }
+
+    public String getLink() {
+        return "/events/" + this.getId();
+    }
+
+    public String getDateStr() {
+        return Utils.formatDate(this.getDate());
+    }
+
+    public String getPlaceInfo() {
+        return this.getPlaceOccuped() + " / " + this.getNbUsersMax();
+    }
+
+    public String getPlaceOccupedRatio() {
+        float ratio = (float) this.getPlaceOccuped() / this.getNbUsersMax();
+
+        if (ratio < 0.2) {
+            return "less_20";
+        } else if (ratio < 0.5) {
+            return "less_50";
+        } else if (ratio < 0.8) {
+            return "less_80";
+        } else if (ratio < 0.95) {
+            return "less_95";
+        } else if (ratio < 1) {
+            return "less_100";
+        } else {
+            return "more_100";
+        }
     }
 
     public void setId(long id) {

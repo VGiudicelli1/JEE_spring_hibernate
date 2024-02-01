@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <div th:replace="fragments/header :: header" th:fragment="template"></div>
+        <div th:replace="fragments/template :: template"></div>
         <p><a href="/events/new">new event</a></p>
         <br>
         <p>Liste des évènements</p>
@@ -13,10 +13,12 @@
             <tr>
                 <th>Titre</th>
                 <th>Date</th>
+                <th>Places</th>
             </tr>
             <tr th:each="event: ${events}">
-                <td><a th:href="'/events/' + ${event.getId()}" th:text="${event.getTitle()}"/></td>
-                <td th:text="${event.getDate()}"/>
+                <td><a th:href="${event.getLink()}" th:text="${event.getTitle()}"/></td>
+                <td th:text="${event.getDateStr()}"/>
+                <td th:class="${event.getPlaceOccupedRatio()}" th:text="${event.getPlaceInfo()}">
             </tr>
         </table>
         <p th:if="${events.isEmpty()}">Aucun évènement disponnible</p>

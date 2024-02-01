@@ -3,6 +3,36 @@
 <head>
 </head>
 <body>
+    <style th:fragment="template">
+        td, th {
+            text-align: center;
+            padding: 0.3em;
+            background-color: #EEE;
+        }
+
+        th {
+            background-color: #AAA;
+        }
+
+        td.less_20 {
+            background-color: hsl(90deg, 70%, 70%);
+        }
+        td.less_50 {
+            background-color: hsl(70deg, 70%, 70%);
+        }
+        td.less_80 {
+            background-color: hsl(50deg, 70%, 70%);
+        }
+        td.less_95 {
+            background-color: hsl(30deg, 70%, 70%);
+        }
+        td.less_100 {
+            background-color: hsl(15deg, 70%, 70%);
+        }
+        td.more_100 {
+            background-color: hsl(0deg, 70%, 70%);
+        }
+    </style>
     <div th:replace="fragments/header :: header" th:fragment="template"></div>
 </body>
 </html>

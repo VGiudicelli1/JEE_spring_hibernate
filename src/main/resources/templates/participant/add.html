@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <div th:replace="fragments/header :: header" th:fragment="template"></div>
+        <div th:replace="fragments/template :: template"></div>
         <h1>Ajouter un évènement</h1>
         <form th:action="@{/events/new}" th:object="${participant}" method="post">
             <!--
