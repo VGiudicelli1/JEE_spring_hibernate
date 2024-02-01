@@ -1,9 +1,11 @@
 package tsi.ensg.prjEval.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,4 +49,37 @@ public class EventController {
         eventService.save(event);
         return "redirect:/events/" + event.getId();
     }
+
+    @GetMapping("/events/edit/{id_event}")
+    public String editEvent(@PathVariable long id_event, Model model) {
+        Optional<Event> event = eventService.findById(id_event);
+        if (event.isEmpty()) {
+            return "redirect:/events/"+id_event;
+        } else {
+            System.out.println(event.get());
+            model.addAttribute("event", event.get());
+            return "event/edit";
+        }
+    }
+
+    @PostMapping("/events/edit/{id_event}")
+    public String editEvent(@PathVariable long id_event, @Validated Event event, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "event/edit/"+id_event;
+        }
+        Event eventOriginal = eventService.findById(id_event).orElse(null);
+        if (eventOriginal == null) {
+            // une erreur s'est produite
+            return "redirect:/events";
+        }
+        event.setId(id_event);
+        event.setParticipants(eventOriginal.getParticipants()); // restore participants
+        if (event.getPlacesFree() < 0) {
+            event.setNbUsersMax(event.getPlaceOccuped());
+        }
+        eventService.save(event);
+        return "redirect:/events/"+id_event;
+    }
+
+
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <title>Template</title>
 </head>
 <body>
     <style th:fragment="template">
@@ -14,23 +15,28 @@
             background-color: #AAA;
         }
 
-        td.less_20 {
+        span.less_20 {
             background-color: hsl(90deg, 70%, 70%);
         }
-        td.less_50 {
+        span.less_50 {
             background-color: hsl(70deg, 70%, 70%);
         }
-        td.less_80 {
+        span.less_80 {
             background-color: hsl(50deg, 70%, 70%);
         }
-        td.less_95 {
+        span.less_95 {
             background-color: hsl(30deg, 70%, 70%);
         }
-        td.less_100 {
+        span.less_100 {
             background-color: hsl(15deg, 70%, 70%);
         }
-        td.more_100 {
+        span.more_100 {
             background-color: hsl(0deg, 70%, 70%);
+        }
+
+        p.description {
+            font-style: italic;
+            color: gray;
         }
     </style>
     <div th:replace="fragments/header :: header" th:fragment="template"></div>
