@@ -2,6 +2,7 @@ package tsi.ensg.prjEval.models;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +21,7 @@ public class Event {
 
     @Column private String content;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column private Date date;
 
     @Column private Double duration; // duration in day

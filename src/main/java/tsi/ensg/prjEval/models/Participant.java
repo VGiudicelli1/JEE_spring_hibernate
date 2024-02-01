@@ -2,6 +2,7 @@ package tsi.ensg.prjEval.models;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +20,7 @@ public class Participant {
     @Column private String firstName;
     @Column private String lastName;
     @Column private String email;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column private Date birthdate;
     @Column private String company;
     @Column private String comments;
