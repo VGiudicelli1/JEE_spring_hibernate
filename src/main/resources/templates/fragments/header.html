@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+    </head>
+    <body>
+        <style th:fragment="header">
+            header {
+                background-color: #CDF;
+                padding: 0.5em 3em;
+            }
+            footer {
+                display: none;
+                background-color: blue;
+            }
+            header div.button {
+                display: inline-block;
+                width: 10em;
+                padding: 0.3em;
+                text-align: center;
+                background-color: #ACF;
+                border-radius: 0.2em;
+                margin: 0.2em 2em;
+                cursor: pointer;
+            }
+        </style>
+        <header th:fragment="header">
+            <div class="button" onclick="history.back()">Back</div>
+            <div class="button" onclick="window.open('/', '_self')">Home</div>
+        </header>
+        <footer th:fragment="header">
+            Footer
+        </footer>
+        <div>
+            test
+        </div>
+
+    </body>
+</html>
