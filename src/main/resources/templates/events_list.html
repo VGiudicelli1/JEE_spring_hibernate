@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <title>Events list</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,7 +9,7 @@
         <p><a href="/events/new">new event</a></p>
         <br>
         <p>Liste des évènements</p>
-        <table>
+        <table th:if="${!events.isEmpty()}">
             <tr>
                 <th>Titre</th>
                 <th>Date</th>
@@ -19,5 +19,6 @@
                 <td th:text="${event.getDate()}"/>
             </tr>
         </table>
+        <p th:if="${events.isEmpty()}">Aucun évènement disponnible</p>
     </body>
 </html>

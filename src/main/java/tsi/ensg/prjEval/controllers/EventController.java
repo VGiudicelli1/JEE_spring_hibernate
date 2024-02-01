@@ -22,20 +22,14 @@ public class EventController {
     @GetMapping("/events")
     public String getAllEvents(Model model) {
         List<Event> events = eventService.findAll();
-        if (events.isEmpty()) {
-            return "events_list_empty.html";
-        }
         model.addAttribute("events", events);
         return "events_list.html";
     }
 
     @GetMapping("/events/{id_event}")
     public String getEventWithId(@PathVariable("id_event") long id_event, Model model) {
-        Optional<Event> event = eventService.findById(id_event);
-        if (event.isEmpty()) {
-            return "event_info_error.html";
-        }
-        model.addAttribute("event", event.get());
+        Event event = eventService.findById(id_event).orElse(null);
+        model.addAttribute("event", event);
         return "event_info.html";
     }
 
