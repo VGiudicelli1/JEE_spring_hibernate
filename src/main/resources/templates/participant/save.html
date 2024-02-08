@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Participant Editor</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <div th:replace="fragments/template :: template"></div>
+        <h1 th:text="${participant.getId()} == 0 ? 'Créer un participant' : 'Modifier un participant'"></h1>
+        <form
+                th:action="${participant.getId()} == 0 ? @{/participants/new} : @{/participants/edit/} + ${participant.getId()}"
+                th:object="${participant}" method="post"
+        >
+
+            <label for="firstName">First name</label>
+            <input type="text" th:field="*{firstName}" name="firstName" id="firstName" placeholder="First Name">
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"/>
+
+            <br>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" th:field="*{lastName}" name="lastName" id="lastName" placeholder="Last Name">
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"/>
+
+            <br>
+
+            <label for="email">email</label>
+            <input type="email" th:field="*{email}" name="lastName" id="email" placeholder="name.lastname@tsi.ensg">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+
+            <br>
+
+            <label for="birthdate">Birthdate</label>
+            <input type="date" th:field="*{birthdate}" name="birthdate" id="birthdate">
+            <span th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"/>
+
+            <br>
+
+            <label for="company">company</label>
+            <input type="text" th:field="*{company}" name="company" id="company" placeholder="company">
+            <span th:if="${#fields.hasErrors('company')}" th:errors="*{company}"/>
+
+            <br>
+
+            <label for="comments">comments</label>
+            <input type="text" th:field="*{comments}" name="comments" id="comments" placeholder="comments">
+            <span th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}"/>
+
+            <br>
+
+            <button type="submit" th:text="${participant.getId()} == 0 ? 'Ajouter' : 'Éditer'"></button>
+        </form>
+    </body>
+</html>
