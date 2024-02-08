@@ -1,0 +1,36 @@
+div.infoUser {
+              background-color: #00DDFF;
+              display: block;
+              text-align: center;
+              width: 30em;
+              margin: auto;
+            }
+            div.row {
+              display: grid;
+              grid-template-columns: auto auto auto;
+              margin: 0.3em;
+            }
+            div.row.2 {
+            grid-template-columns: auto auto;
+            }
+
+            div.birthdate::before {
+                content: "";
+                background-image: url("/images/cupcake.png");
+            }
+            div.email::before {
+                content: "";
+                background-image: url("/images/email.png");
+            }
+            div.company::before {
+                content: "";
+                background-image: url("/images/company.png");
+            }
+
+            div.row div::before {
+                width: 1em;
+                display: block;
+                height: 1em;
+                position: absolute;
+                background-size: 1em;
+            }
