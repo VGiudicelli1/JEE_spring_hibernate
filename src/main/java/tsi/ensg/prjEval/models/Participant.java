@@ -3,6 +3,7 @@ package tsi.ensg.prjEval.models;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
+import tsi.ensg.prjEval.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -75,6 +76,7 @@ public class Participant {
     public Date getBirthdate() {
         return birthdate;
     }
+    public String getBirthdateStr() { return Utils.formatDate(this.getBirthdate()); }
 
     public String getCompany() {
         return company;
