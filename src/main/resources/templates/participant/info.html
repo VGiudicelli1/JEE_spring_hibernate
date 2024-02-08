@@ -8,7 +8,6 @@
     <body>
         <div th:replace="fragments/template :: template"></div>
         <div th:if="${participant != null}">
-            <p th:text="'Participant : ' + ${participant}"/>
             <div class="infoUser">
                 <div class="row 2">
                     <div th:text="${participant.getFirstName()}"></div>
