@@ -88,5 +88,8 @@ public class EventController {
         return "redirect:/events/"+id_event;
     }
 
+    @PostMapping("/events/addUsersList/{id_event}")
+    ^public
+
 
 }

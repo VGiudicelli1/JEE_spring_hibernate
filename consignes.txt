@@ -3,7 +3,7 @@ Niveau 1 (fonctionnalités minimales)
 [o]		On doit pouvoir ajouter, lister, modifier, supprimer ces événements dans l’application.
 [o]		Les administrateurs peuvent ajouter des participants avec un nom, un prénom, une adresse email, une date de naissance, une organisation/entreprise, et des observations éventuelles.
 [o]		On doit pouvoir ajouter, lister, modifier, supprimer ces participants dans l’application.
-[x]		Ce ne sont pas forcément des participants qui pourront se connecter au site, ils pourront être simplement inscrits aux événements via des formulaires.
+[o]		Ce ne sont pas forcément des participants qui pourront se connecter au site, ils pourront être simplement inscrits aux événements via des formulaires.
 [x]		On doit disposer d’un formulaire permettant d’inscrire un participant à un événement (cela peut se passer sur la même page que la création d’un participant)
 
 Niveau 2 (bonus bleus)
