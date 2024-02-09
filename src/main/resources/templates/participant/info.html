@@ -28,6 +28,7 @@
                     <td><a th:href="'/events/' + ${event.getId()}" th:text="${event.getDisplay()}"/></td>
                 </tr>
             </table>
+            <a th:href="'/participants/delete/' + ${participant.getId()}">Delete</a>
         </div>
     </body>
 </html>

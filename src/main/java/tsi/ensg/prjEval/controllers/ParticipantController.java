@@ -29,7 +29,9 @@ public class ParticipantController {
     @GetMapping("/participants/{id_participant}")
     public String info(@PathVariable("id_participant") long id_participant, Model model) {
         Participant participant = participantService.findById(id_participant).orElse(null);
-        System.out.println(participant);
+        if (participant == null) {
+            return "redirect:/participants";
+        }
         model.addAttribute("participant", participant);
         return "participant/info";
     }
@@ -77,6 +79,12 @@ public class ParticipantController {
 
         participantService.save(participant);
         return "redirect:/participants/"+id_participant;
+    }
+
+    @GetMapping("/participants/delete/{id_participant}")
+    public String delete(@PathVariable long id_participant, Model model) {
+        participantService.findById(id_participant).ifPresent(value -> participantService.delete(value));
+        return "redirect:/participants";
     }
 
 

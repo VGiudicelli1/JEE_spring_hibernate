@@ -38,13 +38,13 @@ public class EventController {
     @GetMapping("/events/new")
     public String addEvent(Model model) {
         model.addAttribute("event", new Event());
-        return "event/add";
+        return "event/save";
     }
 
     @PostMapping("/events/new")
     public String addEvent(@Validated Event event, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "event/add";
+            return "event/save";
         }
         eventService.save(event);
         return "redirect:/events/" + event.getId();
@@ -58,14 +58,14 @@ public class EventController {
         } else {
             System.out.println(event.get());
             model.addAttribute("event", event.get());
-            return "event/edit";
+            return "event/save";
         }
     }
 
     @PostMapping("/events/edit/{id_event}")
     public String editEvent(@PathVariable long id_event, @Validated Event event, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "event/edit/"+id_event;
+            return "event/save";
         }
         Event eventOriginal = eventService.findById(id_event).orElse(null);
         if (eventOriginal == null) {

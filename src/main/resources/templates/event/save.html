@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Event info</title>
+        <title>Event Editor</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
         <div th:replace="fragments/template :: template"></div>
-        <h1>Ajouter un évènement</h1>
-        <form th:action="@{/events/new}" th:object="${event}" method="post">
+        <h1 th:text="${event.getId()} == 0 ? 'Ajouter un évènement' : 'Modifier un évènement'"></h1>
+        <form th:action="${event.getId()} == 0 ? @{/events/new} : @{/events/edit/} + ${event.getId()}" th:object="${event}" method="post">
             <label for="title">Titre</label>
             <input type="text" th:field="*{title}" name="title" id="title" placeholder="Mon évènement">
             <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
@@ -38,7 +38,7 @@
 
             <br>
 
-            <button type="submit">Ajouter</button>
+            <button type="submit" th:text="${event.getId()} == 0 ? 'Ajouter' : 'Éditer'"></button>
         </form>
     </body>
 </html>
